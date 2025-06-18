@@ -78,20 +78,27 @@
       <div class="form-group">
         <input type="text" id="name" placeholder="Full Name" required />
         <input type="email" id="email" placeholder="Email Address" required />
-        <input type="date" id="checkin" placeholder="From" required />
-        <input type="date" id="checkout" placeholder="To"required />
+
+        <label for="checkin" style="color: white;">Check-in Date (From)</label>
+        <input type="date" id="checkin" required />
+
+        <label for="checkout" style="color: white;">Check-out Date (To)</label>
+        <input type="date" id="checkout" required />
+
         <select id="room-type" required>
           <option value="">Select Room Type</option>
           <option value="Standard">Standard</option>
           <option value="Deluxe">Deluxe</option>
           <option value="Suite">Suite</option>
         </select>
+
         <button type="submit">Check Availability</button>
       </div>
     </form>
     <div id="booking-result" style="color: white; margin-top: 20px;"></div>
   </div>
 </section>
+
 
 <section id="helpdesk">
   <div class="container">
