@@ -83,10 +83,19 @@
       <option value="Delhi">Delhi</option>
       <option value="Mumbai">Mumbai</option>
     </select>
+<!-- City Dropdown -->
+<select id="city" onchange="updateHotels()" required>
+  <option value="">Select City</option>
+  <option value="Hyderabad">Hyderabad</option>
+  <option value="Delhi">Delhi</option>
+  <option value="Mumbai">Mumbai</option>
+  <option value="Bangalore">Bangalore</option>
+</select>
 
-    <select id="hotel" required>
-      <option value="">Select Hotel</option>
-    </select>
+<!-- Hotel Dropdown -->
+<select id="hotel" required>
+  <option value="">Select Hotel</option>
+</select>
 
     <select id="room-type" required>
       <option value="">Select Room Type</option>
@@ -225,6 +234,29 @@
     document.getElementById('booking-result').innerHTML = result;
   }
 </script>
+function updateHotels() {
+  const city = document.getElementById("city").value;
+  const hotelSelect = document.getElementById("hotel");
+
+  // Clear previous options
+  hotelSelect.innerHTML = '<option value="">Select Hotel</option>';
+
+  const hotels = {
+    Hyderabad: ["Pearl Residency", "Charminar Palace", "Banjara Retreat"],
+    Delhi: ["Red Fort Inn", "Capital Comfort", "Connaught Royale"],
+    Mumbai: ["Marine View Hotel", "Gateway Residency", "Bollywood Stay"],
+    Bangalore: ["Silicon Suites", "Gardenia Grand", "Cubbon Comfort"]
+  };
+
+  if (hotels[city]) {
+    hotels[city].forEach(hotel => {
+      const option = document.createElement("option");
+      option.value = hotel;
+      option.textContent = hotel;
+      hotelSelect.appendChild(option);
+    });
+  }
+}
 
 
 </body>
