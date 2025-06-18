@@ -190,6 +190,42 @@
     event.target.style.display = "none";
   }
 </script>
+  <script>
+  const hotelOptions = {
+    Hyderabad: ["StayEase Banjara", "StayEase Gachibowli"],
+    Delhi: ["StayEase Connaught", "StayEase Karol Bagh"],
+    Mumbai: ["StayEase Andheri", "StayEase Bandra"]
+  };
+
+  function updateHotels() {
+    const city = document.getElementById("city").value;
+    const hotelSelect = document.getElementById("hotel");
+    hotelSelect.innerHTML = `<option value="">Select Hotel</option>`;
+    if (city && hotelOptions[city]) {
+      hotelOptions[city].forEach(hotel => {
+        const option = document.createElement("option");
+        option.value = hotel;
+        option.textContent = hotel;
+        hotelSelect.appendChild(option);
+      });
+    }
+  }
+
+  function checkAvailability(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const room = document.getElementById('room-type').value;
+    const checkin = document.getElementById('checkin').value;
+    const city = document.getElementById('city').value;
+    const hotel = document.getElementById('hotel').value;
+    const result = `
+      <p><strong>Thank you, ${name}!</strong></p>
+      <p>Your ${room} room at <strong>${hotel}</strong>, ${city} is being checked for availability on ${checkin}.</p>
+    `;
+    document.getElementById('booking-result').innerHTML = result;
+  }
+</script>
+
 
 </body>
 </html>
