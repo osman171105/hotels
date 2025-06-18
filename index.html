@@ -70,32 +70,36 @@
     </div>
   </div>
 </section>
-
-<section id="booking">
-  <div class="container">
-    <h2 style="color: white;">Book Your Stay</h2>
-    <form onsubmit="checkAvailability(event)">
-      <div class="form-group">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-
-
- 
+<form onsubmit="checkAvailability(event)">
+  <div class="form-group">
+    <input type="text" id="name" placeholder="Full Name" required />
+    <input type="email" id="email" placeholder="Email Address" required />
+    
     <input type="date" id="checkin" placeholder="Check-in Date" required />
-    <input type="date" id="checkout" placeholder="Check-out Date" required />
-        <select id="room-type" required>
-          <option value="">Select Room Type</option>
-          <option value="Standard">Standard</option>
-          <option value="Deluxe">Deluxe</option>
-          <option value="Suite">Suite</option>
-        </select>
 
-        <button type="submit">Check Availability</button>
-      </div>
-    </form>
-    <div id="booking-result" style="color: white; margin-top: 20px;"></div>
+    <select id="city" onchange="updateHotels()" required>
+      <option value="">Select City</option>
+      <option value="Hyderabad">Hyderabad</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Mumbai">Mumbai</option>
+    </select>
+
+    <select id="hotel" required>
+      <option value="">Select Hotel</option>
+    </select>
+
+    <select id="room-type" required>
+      <option value="">Select Room Type</option>
+      <option value="Standard">Standard</option>
+      <option value="Deluxe">Deluxe</option>
+      <option value="Suite">Suite</option>
+    </select>
+
+    <button type="submit">Check Availability</button>
   </div>
-</section>
+</form>
+<div id="booking-result" style="color: white; margin-top: 20px;"></div>
+
 
 
 <section id="helpdesk">
