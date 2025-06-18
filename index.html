@@ -79,12 +79,12 @@
         <input type="text" id="name" placeholder="Full Name" required />
         <input type="email" id="email" placeholder="Email Address" required />
 
+
         <label for="checkin" style="color: white;">Check-in Date (From)</label>
         <input type="date" id="checkin" required />
 
         <label for="checkout" style="color: white;">Check-out Date (To)</label>
         <input type="date" id="checkout" required />
-
         <select id="room-type" required>
           <option value="">Select Room Type</option>
           <option value="Standard">Standard</option>
@@ -118,11 +118,11 @@
     <h2>Customer Reviews</h2>
     <div class="review-box">
       <p>"Amazing hospitality and beautiful rooms! Will definitely come back."</p>
-      <h4>- Ayesha R.</h4>
+      <h4>- Asim</h4>
     </div>
     <div class="review-box">
       <p>"The best budget-friendly hotel experience I've had. Highly recommended!"</p>
-      <h4>- Rohan M.</h4>
+      <h4>- Samad</h4>
     </div>
     <div id="more-reviews" style="display: none;"></div>
     <button onclick="showMoreReviews()" style="margin-top: 20px;">Show More Reviews</button>
@@ -166,14 +166,14 @@
 
   function showMoreReviews() {
     const moreReviews = [
-      { name: "Sneha K.", text: "Loved the service and the location. Very convenient and peaceful." },
-      { name: "Arjun P.", text: "Impressed with cleanliness and helpful staff. Good value for money." },
-      { name: "Fatima Z.", text: "Had a smooth check-in and comfortable stay. Highly recommend." },
-      { name: "Kiran V.", text: "Great experience, the food was delicious too!" },
-      { name: "Ritika S.", text: "Family-friendly hotel with great amenities. My kids loved it!" },
-      { name: "Imran H.", text: "I’ve stayed at many hotels, but StayEase feels like home." },
-      { name: "Tarun D.", text: "Exceptional service and neat rooms. Worth every rupee." },
-      { name: "Nisha M.", text: "Affordable luxury. You get more than what you pay for." },
+      { name: "Suleman", text: "Loved the service and the location. Very convenient and peaceful." },
+      { name: "Razzaq", text: "Impressed with cleanliness and helpful staff. Good value for money." },
+      { name: "Karthik", text: "Had a smooth check-in and comfortable stay. Highly recommend." },
+      { name: "Anirudh", text: "Great experience, the food was delicious too!" },
+      { name: "Ved", text: "Family-friendly hotel with great amenities. My kids loved it!" },
+      { name: "Rama Krishna", text: "I’ve stayed at many hotels, but StayEase feels like home." },
+      { name: "Adith", text: "Exceptional service and neat rooms. Worth every rupee." },
+      { name: "Malik", text: "Affordable luxury. You get more than what you pay for." },
     ];
 
     const container = document.getElementById("more-reviews");
