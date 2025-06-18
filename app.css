@@ -1,0 +1,261 @@
+
+<style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #fdfdfd;
+      color: #333;
+      padding-top: 0;
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    header video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.885);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: flex-end;
+      gap: 30px;
+      color: #ffffff;
+      padding: 20px 60px;
+      z-index: 999;
+    }
+
+    .top-nav a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .top-nav a:hover {
+      transform: scale(1.1);
+      color: white;
+    }
+
+    .hero {
+      z-index: 1;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      text-shadow: 2px 2px 6px rgb(0, 0, 0);
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    section#about { background-color: #d0e8f2; }
+    section#rooms { background-color: #ffe8a9; }
+    section#booking { background-color: #a7fcb0; }
+    section#helpdesk { background-color: #e8d1fc; }
+    section#reviews { background-color: #ffdadb; }
+    section#contact { background-color: #f3e556; }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #000000;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+      align-items: center;
+    }
+
+    input, select, button {
+      padding: 12px;
+      width: 60%;
+      max-width: 350px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #246300;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a83704;
+    }
+
+    .room-grid {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .room-card {
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 280px;
+      padding: 20px;
+    }
+
+    .room-card img {
+      width: 100%;
+      border-radius: 8px;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .room-card img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .room-card h3 {
+      margin-top: 15px;
+      font-size: 1.3rem;
+      color: #333;
+    }
+
+    .contact-floating a {
+      color: #913030;
+      text-decoration: none;
+    }
+
+    .contact-floating i {
+      margin-right: 10px;
+      color: #c1440e;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    #loader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+    section#booking {
+  background-image: url('booking-bg.jpg'); /* Replace with your image file path */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+section#booking::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust transparency here */
+  z-index: -1;
+}
+
+    #loader i {
+      font-size: 60px;
+      color: white;
+      animation: bedBounce 1s infinite;
+    }
+
+    @keyframes bedBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .help-options {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-size: 1.1rem;
+      padding: 10px;
+      line-height: 1.6;
+    }
+
+    .review-box {
+      background: white;
+      margin: 15px auto;
+      padding: 20px;
+      max-width: 700px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .review-box p {
+      font-style: italic;
+      color: #444;
+    }
+
+    .review-box h4 {
+      margin-top: 10px;
+      text-align: right;
+      color: #333;
+    }
+  </style>

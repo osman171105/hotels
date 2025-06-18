@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StayEase Hotels</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<div id="loader">
+  <i class="fas fa-bed"></i>
+</div>
+<!--
+<div class="contact-floating">
+  <p><i class="fas fa-phone-alt"></i><a href="tel:+918639039262">+91 8639039262</a></p>
+  <p><i class="fas fa-envelope"></i><a href="mailto:info@stayease.com">info@stayease.com</a></p>
+  <p><i class="fab fa-instagram"></i><a href="https://instagram.com/stayeasehotels" target="_blank">@stayeasehotels</a></p>
+</div>-->
+
+<nav class="top-nav">
+  <a href="#about" onclick="showLoader()">About</a>
+  <a href="#rooms" onclick="showLoader()">Rooms</a>
+  <a href="#booking" onclick="showLoader()">Booking</a>
+  <a href="#helpdesk" onclick="showLoader()">Help Desk</a>
+  <a href="#reviews" onclick="showLoader()">Reviews</a>
+  <a href="#contact" onclick="showLoader()">Contact</a>
+</nav>
+
+<header>
+  <video autoplay muted loop playsinline>
+    <source src="hotels.mp4" type="video/mp4">
+  </video>
+  <div class="hero">
+    <h1>Welcome to StayEase</h1>
+    <p><strong>Comfort. Luxury. Affordability.</strong></p>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <h2>About Us</h2>
+    <p><b>StayEase</b> offers a range of beautifully designed hotels located in major cities, blending comfort and class with budget-friendly options. Whether you're a business traveler, a tourist, or a family on vacation, we provide the perfect stay tailored to your needs.
+    At StayEase, we believe that luxury should be accessible to everyone. Our hotels feature elegantly furnished rooms, modern amenities, and top-notch service, ensuring a relaxing and memorable experience. From cozy standard rooms to spacious suites, every space is crafted to make you feel at home.</p><br><br>
+    <p>We are strategically located near key transportation hubs, business districts, and popular attractions, making it easy for guests to explore and connect. Our dedicated team is available 24/7 to assist with all your needs—from travel guidance to room service—ensuring a seamless and enjoyable stay.
+    With a commitment to hygiene, hospitality, and high standards, StayEase continues to redefine affordable luxury across India.</p>
+  </div>
+</section>
+
+<section id="rooms">
+  <div class="container">
+    <h2>Available Room Types</h2>
+    <div class="room-grid">
+      <div class="room-card">
+        <img src="standard.jpg" alt="Standard Room">
+        <h3>Standard Room</h3>
+        <p>Cozy and economical for short stays.</p>
+      </div>
+      <div class="room-card">
+        <img src="deluxe.jpg" alt="Deluxe Room">
+        <h3>Deluxe Room</h3>
+        <p>Comfort with additional space and amenities.</p>
+      </div>
+      <div class="room-card">
+        <img src="suite.jpg" alt="Suite">
+        <h3>Suite</h3>
+        <p>Premium experience for families or business travelers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="container">
+    <h2 style="color: white;">Book Your Stay</h2>
+    <form onsubmit="checkAvailability(event)">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="date" id="checkin" required />
+        <input type="date" id="checkout" required />
+        <select id="room-type" required>
+          <option value="">Select Room Type</option>
+          <option value="Standard">Standard</option>
+          <option value="Deluxe">Deluxe</option>
+          <option value="Suite">Suite</option>
+        </select>
+        <button type="submit">Check Availability</button>
+      </div>
+    </form>
+    <div id="booking-result" style="color: white; margin-top: 20px;"></div>
+  </div>
+</section>
+
+<section id="helpdesk">
+  <div class="container">
+    <h2>Help Desk</h2>
+    <div class="help-options">
+      <p>🧳 Forgot your luggage? <strong>Contact us immediately</strong> to recover your belongings.</p>
+      <p>📩 Have a complaint or suggestion? <strong>Report it</strong> through our support.</p>
+      <p>⏰ Running late for check-in? <strong>Notify us</strong> for special arrangements.</p>
+      <p>💬 Share your feedback to help us improve.</p>
+      <p>♿ Need special assistance? <strong>Reach out to our care team</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <h2>Customer Reviews</h2>
+    <div class="review-box">
+      <p>"Amazing hospitality and beautiful rooms! Will definitely come back."</p>
+      <h4>- Ayesha R.</h4>
+    </div>
+    <div class="review-box">
+      <p>"The best budget-friendly hotel experience I've had. Highly recommended!"</p>
+      <h4>- Rohan M.</h4>
+    </div>
+    <div id="more-reviews" style="display: none;"></div>
+    <button onclick="showMoreReviews()" style="margin-top: 20px;">Show More Reviews</button>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <p><strong>Phone:</strong> <a href="tel:+918639039262">+91 8639039262</a></p>
+    <p><strong>Email:</strong> <a href="mailto:info@stayease.com">info@stayease.com</a></p>
+    <p><strong>Instagram:</strong> <a href="https://instagram.com/stayeasehotels" target="_blank">@stayeasehotels</a></p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 StayEase Hotels. Your comfort, our priority.
+</footer>
+
+<script>
+  function showLoader() {
+    const loader = document.getElementById('loader');
+    loader.style.display = 'flex';
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 1200);
+  }
+
+  function checkAvailability(event) {
+    event.preventDefault();
+    const name = document.getElementById('name').value;
+    const room = document.getElementById('room-type').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const result = `
+      <p><strong>Thank you, ${name}!</strong></p>
+      <p>Your ${room} room is being checked for availability from ${checkin} to ${checkout}.</p>
+    `;
+    document.getElementById('booking-result').innerHTML = result;
+  }
+
+  function showMoreReviews() {
+    const moreReviews = [
+      { name: "Sneha K.", text: "Loved the service and the location. Very convenient and peaceful." },
+      { name: "Arjun P.", text: "Impressed with cleanliness and helpful staff. Good value for money." },
+      { name: "Fatima Z.", text: "Had a smooth check-in and comfortable stay. Highly recommend." },
+      { name: "Kiran V.", text: "Great experience, the food was delicious too!" },
+      { name: "Ritika S.", text: "Family-friendly hotel with great amenities. My kids loved it!" },
+      { name: "Imran H.", text: "I’ve stayed at many hotels, but StayEase feels like home." },
+      { name: "Tarun D.", text: "Exceptional service and neat rooms. Worth every rupee." },
+      { name: "Nisha M.", text: "Affordable luxury. You get more than what you pay for." },
+    ];
+
+    const container = document.getElementById("more-reviews");
+    moreReviews.forEach(review => {
+      const box = document.createElement("div");
+      box.className = "review-box";
+      box.innerHTML = `<p>"${review.text}"</p><h4>- ${review.name}</h4>`;
+      container.appendChild(box);
+    });
+
+    container.style.display = "block";
+    event.target.style.display = "none";
+  }
+</script>
+
+</body>
+</html>
