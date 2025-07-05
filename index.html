@@ -1,170 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StayEase Hotels</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-
-<div id="loader">
-  <i class="fas fa-bed"></i>
-</div>
-
-<nav class="top-nav">
-  <div class="profile-button" onclick="toggleProfilePopup()">
-    <i class="fas fa-user-circle fa-2x"></i>
+  <div id="loader">
+    <i class="fas fa-bed"></i>
   </div>
-  <a href="#about" onclick="showLoader()">About</a>
-  <a href="#rooms" onclick="showLoader()">Rooms</a>
-  <a href="#booking" onclick="showLoader()">Booking</a>
-  <a href="#helpdesk" onclick="showLoader()">Help Desk</a>
-  <a href="#reviews" onclick="showLoader()">Reviews</a>
-  <a href="#contact" onclick="showLoader()">Contact</a>
-</nav>
 
-<div id="profile-popup" class="profile-popup">
-  <div class="popup-content">
-    <h3 id="form-title">Login / Signup</h3>
-    <input type="text" id="popup-name" placeholder="Enter your name" required />
-    <input type="email" id="popup-email" placeholder="Enter your email" required />
-    <label id="profile-pic-label" for="popup-photo" style="color: #555; cursor: pointer; font-weight: 500; text-align: center;">Add your profile pic</label>
-    <input type="file" id="popup-photo" accept="image/*" style="display:none;" />
-    <button id="submit-btn" onclick="saveProfile()">Submit</button>
-    <button id="logout-btn" onclick="logout()" style="background-color: red; display: none;">Logout</button>
-  </div>
-</div>
-<div class="profile-tab-container">
-  <button onclick="showTab('info')">Profile Info</button>
-  <button onclick="showTab('bookings')">My Bookings</button>
-  <button onclick="showTab('settings')">Settings</button>
-</div>
-<button id="theme-switcher" onclick="toggleTheme()">Switch Theme</button>
+  <nav class="top-nav">
+    <div class="profile-button" onclick="toggleProfilePopup()">
+      <i class="fas fa-user-circle fa-2x"></i>
+    </div>
+    <a href="#about" onclick="showLoader()">About</a>
+    <a href="#rooms" onclick="showLoader()">Rooms</a>
+    <a href="#booking" onclick="showLoader()">Booking</a>
+    <a href="#helpdesk" onclick="showLoader()">Help Desk</a>
+    <a href="#reviews" onclick="showLoader()">Reviews</a>
+    <a href="#contact" onclick="showLoader()">Contact</a>
+  </nav>
 
-<header>
-  <video autoplay muted loop playsinline>
-    <source src="hotels.mp4" type="video/mp4">
-  </video>
-  <div class="hero">
-    <h1>Welcome to StayEase</h1>
-    <p><strong>Comfort. Luxury. Affordability.</strong></p>
-  </div>
-</header>
-
-<section id="about">
-  <div class="container">
-    <h2>About Us</h2>
-    <p><b>StayEase</b> offers a range of beautifully designed hotels located in major cities, blending comfort and class with budget-friendly options. Whether you're a business traveler, a tourist, or a family on vacation, we provide the perfect stay tailored to your needs.</p>
-    <p>At StayEase, we believe that luxury should be accessible to everyone. Our hotels feature elegantly furnished rooms, modern amenities, and top-notch service, ensuring a relaxing and memorable experience. From cozy standard rooms to spacious suites, every space is crafted to make you feel at home.</p>
-    <p>We are strategically located near key transportation hubs, business districts, and popular attractions, making it easy for guests to explore and connect. Our dedicated team is available 24/7 to assist with all your needs—from travel guidance to room service—ensuring a seamless and enjoyable stay.</p>
-    <p>With a commitment to hygiene, hospitality, and high standards, StayEase continues to redefine affordable luxury across India.</p>
-  </div>
-</section>
-
-<section id="rooms">
-  <div class="container">
-    <h2>Available Room Types</h2>
-    <div class="room-grid">
-      <div class="room-card">
-        <img src="standard.jpg" alt="Standard Room">
-        <h3>Standard Room</h3>
-        <p>Cozy and economical for short stays.</p>
-      </div>
-      <div class="room-card">
-        <img src="deluxe.jpg" alt="Deluxe Room">
-        <h3>Deluxe Room</h3>
-        <p>Comfort with additional space and amenities.</p>
-      </div>
-      <div class="room-card">
-        <img src="suite.jpg" alt="Suite">
-        <h3>Suite</h3>
-        <p>Premium experience for families or business travelers.</p>
-      </div>
+  <div id="profile-popup" class="profile-popup">
+    <div class="popup-content">
+      <h3 id="form-title">Login / Signup</h3>
+      <input type="text" id="popup-name" placeholder="Enter your name" required style="border: 1px solid #ccc; border-radius: 5px;">
+      <input type="email" id="popup-email" placeholder="Enter your email" required style="border: 1px solid #ccc; border-radius: 5px;">
+      <label id="profile-pic-label" for="popup-photo" style="color: #555; cursor: pointer; font-weight: 500; text-align: center;">Add your profile pic</label>
+      <input type="file" id="popup-photo" accept="image/*" style="display:none;">
+      <button id="submit-btn" onclick="saveProfile()">Submit</button>
+      <button id="logout-btn" onclick="logout()" style="background-color: red; display: none;">Logout</button>
     </div>
   </div>
-</section>
 
-<section id="booking">
-  <div class="container">
-    <h2 style="color: white;">Book Your Stay</h2>
-    <form onsubmit="checkAvailability(event)">
-      <div class="form-group">
-        <input type="text" id="name" placeholder="Full Name" required />
-        <input type="email" id="email" placeholder="Email Address" required />
-        <input type="date" id="checkin" required />
-        <input type="date" id="checkout" required />
+  <header>
+    <video autoplay muted loop playsinline>
+      <source src="hotels.mp4" type="video/mp4">
+    </video>
+    <div class="hero">
+      <h1>Welcome to StayEase</h1>
+      <p><strong>Comfort. Luxury. Affordability.</strong></p>
+    </div>
+  </header>
 
-        <select id="city" onchange="updateHotels()" required>
-          <option value="">Select City</option>
-          <option value="Hyderabad">Hyderabad</option>
-          <option value="Delhi">Delhi</option>
-          <option value="Mumbai">Mumbai</option>
-          <option value="Bangalore">Bangalore</option>
-        </select>
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p><b>StayEase</b> offers a range of beautifully designed hotels located in major cities, blending comfort and class with budget-friendly options. Whether you're a business traveler, a tourist, or a family on vacation, we provide the perfect stay tailored to your needs.</p>
+      <p>We believe that luxury should be accessible to everyone. Our hotels feature elegantly furnished rooms, modern amenities, and top-notch service. From cozy standard rooms to spacious suites, every space is crafted to make you feel at home.</p>
+      <p>We are located near key hubs and attractions. Our team is available 24/7 to assist with your needs, from travel guidance to room service.</p>
+    </div>
+  </section>
 
-        <select id="hotel" required>
-          <option value="">Select Hotel</option>
-        </select>
-
-        <select id="room-type" required>
-          <option value="">Select Room Type</option>
-          <option value="Standard">Standard</option>
-          <option value="Deluxe">Deluxe</option>
-          <option value="Suite">Suite</option>
-        </select>
-
-        <button type="submit">Check Availability</button>
+  <section id="rooms">
+    <div class="container">
+      <h2>Available Room Types</h2>
+      <div class="room-grid">
+        <div class="room-card">
+          <img src="standard.jpg" alt="Standard Room">
+          <h3>Standard Room</h3>
+          <p>Cozy and economical for short stays.</p>
+        </div>
+        <div class="room-card">
+          <img src="deluxe.jpg" alt="Deluxe Room">
+          <h3>Deluxe Room</h3>
+          <p>Comfort with additional space and amenities.</p>
+        </div>
+        <div class="room-card">
+          <img src="suite.jpg" alt="Suite">
+          <h3>Suite</h3>
+          <p>Premium experience for families or business travelers.</p>
+        </div>
       </div>
-    </form>
-    <div id="booking-result" style="color: white; margin-top: 20px;"></div>
-  </div>
-</section>
-
-<section id="helpdesk">
-  <div class="container">
-    <h2>Help Desk</h2>
-    <div class="help-options">
-      <p>🧳 Forgot your luggage? <strong>Contact us immediately</strong> to recover your belongings.</p>
-      <p>📩 Have a complaint or suggestion? <strong>Report it</strong> through our support.</p>
-      <p>⏰ Running late for check-in? <strong>Notify us</strong> for special arrangements.</p>
-      <p>💬 Share your feedback to help us improve.</p>
-      <p>♿ Need special assistance? <strong>Reach out to our care team</strong>.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="reviews">
-  <div class="container">
-    <h2>Customer Reviews</h2>
-    <div class="review-box">
-      <p>"Amazing hospitality and beautiful rooms! Will definitely come back."</p>
-      <h4>- Asim</h4>
+  <section id="booking">
+    <div class="container">
+      <h2>Book Your Stay</h2>
+      <form onsubmit="checkAvailability(event)">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Full Name" required style="border: 1px solid #ccc; border-radius: 5px;">
+          <input type="email" id="email" placeholder="Email Address" required style="border: 1px solid #ccc; border-radius: 5px;">
+          <input type="date" id="checkin" required style="border: 1px solid #ccc; border-radius: 5px;">
+          <input type="date" id="checkout" required style="border: 1px solid #ccc; border-radius: 5px;">
+
+          <select id="city" onchange="updateHotels()" required>
+            <option value="">Select City</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+          </select>
+
+          <select id="hotel" required>
+            <option value="">Select Hotel</option>
+          </select>
+
+          <select id="room-type" required>
+            <option value="">Select Room Type</option>
+            <option value="Standard">Standard</option>
+            <option value="Deluxe">Deluxe</option>
+            <option value="Suite">Suite</option>
+          </select>
+
+          <button type="submit">Check Availability</button>
+        </div>
+      </form>
+      <div id="booking-result" style="color: white; margin-top: 20px;"></div>
     </div>
-    <div class="review-box">
-      <p>"The best budget-friendly hotel experience I've had. Highly recommended!"</p>
-      <h4>- Samad</h4>
+  </section>
+
+  <section id="helpdesk">
+    <div class="container">
+      <h2>Help Desk</h2>
+      <div class="help-options">
+        <p>🧳 Forgot your luggage? <strong>Contact us immediately</strong> to recover your belongings.</p>
+        <p>📩 Complaint or suggestion? <strong>Report it</strong> through support.</p>
+        <p>⏰ Late check-in? <strong>Notify us</strong> for special arrangements.</p>
+        <p>💬 Share feedback to help us improve.</p>
+        <p>♿ Need special assistance? <strong>Contact our care team</strong>.</p>
+      </div>
     </div>
-    <div id="more-reviews" style="display: none;"></div>
-    <button onclick="showMoreReviews()" style="margin-top: 20px;">Show More Reviews</button>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <div class="container">
-    <h2>Contact Us</h2>
-    <p><strong>Phone:</strong> <a href="tel:+918639039262">+91 8639039262</a></p>
-    <p><strong>Email:</strong> <a href="mohdosman1705@gmail.com">mohdosman1705@gmail.com</a></p>
-    <p><strong>Instagram:</strong> <a href="https://instagram.com/stayeasehotels" target="_blank">@stayeasehotels</a></p>
-  </div>
-</section>
+  <section id="reviews">
+    <div class="container">
+      <h2>Customer Reviews</h2>
+      <div class="review-box">
+        <p>"Amazing hospitality and beautiful rooms! Will definitely come back."</p>
+        <h4>- Asim</h4>
+      </div>
+      <div class="review-box">
+        <p>"The best budget-friendly hotel experience I've had. Highly recommended!"</p>
+        <h4>- Samad</h4>
+      </div>
+      <div id="more-reviews" style="display: none;"></div>
+      <button onclick="showMoreReviews()" style="margin-top: 20px;">Show More Reviews</button>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 StayEase Hotels. Your comfort, our priority.
-</footer>
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p><strong>Phone:</strong> <a href="tel:+918639039262">+91 8639039262</a></p>
+      <p><strong>Email:</strong> <a href="mailto:info@stayease.com">info@stayease.com</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/stayeasehotels" target="_blank">@stayeasehotels</a></p>
+    </div>
+  </section>
 
-<!-- JavaScript -->
-<script src="hotel.js"></script>
+  <footer>
+    &copy; 2025 StayEase Hotels. Your comfort, our priority.
+  </footer>
+
+  <script src="hotel.js"></script>
 </body>
 </html>
