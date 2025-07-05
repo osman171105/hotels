@@ -13,11 +13,12 @@ function checkAvailability(event) {
   const name = document.getElementById('name').value;
   const room = document.getElementById('room-type').value;
   const checkin = document.getElementById('checkin').value;
+  const checkout = document.getElementById('checkout').value;
   const city = document.getElementById('city').value;
   const hotel = document.getElementById('hotel').value;
   const result = `
     <p><strong>Thank you, ${name}!</strong></p>
-    <p>Your ${room} room at <strong>${hotel}</strong>, ${city} is being checked for availability on ${checkin}.</p>
+    <p>Your ${room} room at <strong>${hotel}</strong>, ${city} is being checked for availability from ${checkin} to ${checkout}.</p>
   `;
   document.getElementById('booking-result').innerHTML = result;
 }
@@ -29,7 +30,7 @@ function showMoreReviews() {
     { name: "Karthik", text: "Had a smooth check-in and comfortable stay. Highly recommend." },
     { name: "Anirudh", text: "Great experience, the food was delicious too!" },
     { name: "Ved", text: "Family-friendly hotel with great amenities. My kids loved it!" },
-    { name: "Rama Krishna", text: "I’ve stayed at many hotels, but StayEase feels like home." },
+    { name: "Rama Krishna", text: "I've stayed at many hotels, but StayEase feels like home." },
     { name: "Adith", text: "Exceptional service and neat rooms. Worth every rupee." },
     { name: "Malik", text: "Affordable luxury. You get more than what you pay for." },
   ];
@@ -149,35 +150,3 @@ function logout() {
 window.onload = () => {
   updateProfileUI();
 };
-// Add image preview
-document.getElementById('popup-photo').addEventListener('change', e => {
-  const [file] = e.target.files;
-  if (!file) return;
-  const preview = document.querySelector('img.preview') || (() => {
-    const img = document.createElement('img');
-    img.classList.add('preview');
-    document.querySelector('.popup-content').prepend(img);
-    return img;
-  })();
-  preview.src = URL.createObjectURL(file);
-});
-
-// Extended saveProfile to include phone & bio
-function saveProfile() {
-  const name = document.getElementById('popup-name').value;
-  const email = document.getElementById('popup-email').value;
-  const phone = document.getElementById('popup-phone').value;
-  const bio = document.getElementById('popup-bio').value;
-  // ...existing photo reader logic...
-  profile = { name, email, phone, bio, photo: reader.result };
-  localStorage.setItem('userProfile', JSON.stringify(profile));
-  updateProfileUI();
-  toggleProfilePopup();
-}
-function toggleTheme() {
-  document.body.classList.toggle('dark-theme');
-}
-function showTab(name){
-  document.querySelectorAll('.tab-pane').forEach(el => el.style.display = el.id === name ? 'block' : 'none');
-}
-
