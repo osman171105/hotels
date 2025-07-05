@@ -193,6 +193,42 @@ footer {
   cursor: pointer;
   color: white;
 }
+/* ... existing CSS above ... */
+
+.blur-bg .main-content {
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.profile-popup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.popup-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.popup-content .close-btn {
+  position: absolute;
+  top: 5px;
+  right: 12px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #444;
+}
 
 .profile-popup {
   display: none;
