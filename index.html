@@ -12,12 +12,6 @@
 <div id="loader">
   <i class="fas fa-bed"></i>
 </div>
-<!--
-<div class="contact-floating">
-  <p><i class="fas fa-phone-alt"></i><a href="tel:+918639039262">+91 8639039262</a></p>
-  <p><i class="fas fa-envelope"></i><a href="mailto:info@stayease.com">info@stayease.com</a></p>
-  <p><i class="fab fa-instagram"></i><a href="https://instagram.com/stayeasehotels" target="_blank">@stayeasehotels</a></p>
-</div>-->
 
 <nav class="top-nav">
   <div class="profile-button" onclick="toggleProfilePopup()">
@@ -30,14 +24,16 @@
   <a href="#reviews" onclick="showLoader()">Reviews</a>
   <a href="#contact" onclick="showLoader()">Contact</a>
 </nav>
+
 <div id="profile-popup" class="profile-popup">
   <div class="popup-content">
     <h3 id="form-title">Login / Signup</h3>
     <input type="text" id="popup-name" placeholder="Enter your name" required />
     <input type="email" id="popup-email" placeholder="Enter your email" required />
-    <input type="file" id="popup-photo" accept="image/*" />
-    <button onclick="saveProfile()">Submit</button>
-    <button onclick="logout()" style="background-color: red;">Logout</button>
+    <label id="profile-pic-label" for="popup-photo" style="color: #555; cursor: pointer; font-weight: 500; text-align: center;">Add your profile pic</label>
+    <input type="file" id="popup-photo" accept="image/*" style="display:none;" />
+    <button id="submit-btn" onclick="saveProfile()">Submit</button>
+    <button id="logout-btn" onclick="logout()" style="background-color: red; display: none;">Logout</button>
   </div>
 </div>
 
@@ -54,10 +50,10 @@
 <section id="about">
   <div class="container">
     <h2>About Us</h2>
-    <p><b>StayEase</b> offers a range of beautifully designed hotels located in major cities, blending comfort and class with budget-friendly options. Whether you're a business traveler, a tourist, or a family on vacation, we provide the perfect stay tailored to your needs.
-    At StayEase, we believe that luxury should be accessible to everyone. Our hotels feature elegantly furnished rooms, modern amenities, and top-notch service, ensuring a relaxing and memorable experience. From cozy standard rooms to spacious suites, every space is crafted to make you feel at home.</p><br><br>
-    <p>We are strategically located near key transportation hubs, business districts, and popular attractions, making it easy for guests to explore and connect. Our dedicated team is available 24/7 to assist with all your needs—from travel guidance to room service—ensuring a seamless and enjoyable stay.
-    With a commitment to hygiene, hospitality, and high standards, StayEase continues to redefine affordable luxury across India.</p>
+    <p><b>StayEase</b> offers a range of beautifully designed hotels located in major cities, blending comfort and class with budget-friendly options. Whether you're a business traveler, a tourist, or a family on vacation, we provide the perfect stay tailored to your needs.</p>
+    <p>At StayEase, we believe that luxury should be accessible to everyone. Our hotels feature elegantly furnished rooms, modern amenities, and top-notch service, ensuring a relaxing and memorable experience. From cozy standard rooms to spacious suites, every space is crafted to make you feel at home.</p>
+    <p>We are strategically located near key transportation hubs, business districts, and popular attractions, making it easy for guests to explore and connect. Our dedicated team is available 24/7 to assist with all your needs—from travel guidance to room service—ensuring a seamless and enjoyable stay.</p>
+    <p>With a commitment to hygiene, hospitality, and high standards, StayEase continues to redefine affordable luxury across India.</p>
   </div>
 </section>
 
@@ -83,42 +79,42 @@
     </div>
   </div>
 </section>
-<form onsubmit="checkAvailability(event)">
-  <div class="form-group">
-        <h2>Book Your Room</h2>
 
-    <input type="text" id="name" placeholder="Full Name" required />
-    <input type="email" id="email" placeholder="Email Address" required />
-    
-    <input type="date" id="checkin" placeholder="Check-in Date" required />
+<section id="booking">
+  <div class="container">
+    <h2 style="color: white;">Book Your Stay</h2>
+    <form onsubmit="checkAvailability(event)">
+      <div class="form-group">
+        <input type="text" id="name" placeholder="Full Name" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+        <input type="date" id="checkin" required />
+        <input type="date" id="checkout" required />
 
-    <select id="city" onchange="updateHotels()" required>
-      <option value="">Select City</option>
-      <option value="Hyderabad">Hyderabad</option>
-      <option value="Delhi">Delhi</option>
-      <option value="Mumbai">Mumbai</option>
-    </select>
-<!-- City Dropdown -->
+        <select id="city" onchange="updateHotels()" required>
+          <option value="">Select City</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+        </select>
 
+        <select id="hotel" required>
+          <option value="">Select Hotel</option>
+        </select>
 
-<!-- Hotel Dropdown -->
-<select id="hotel" required>
-  <option value="">Select Hotel</option>
-</select>
+        <select id="room-type" required>
+          <option value="">Select Room Type</option>
+          <option value="Standard">Standard</option>
+          <option value="Deluxe">Deluxe</option>
+          <option value="Suite">Suite</option>
+        </select>
 
-    <select id="room-type" required>
-      <option value="">Select Room Type</option>
-      <option value="Standard">Standard</option>
-      <option value="Deluxe">Deluxe</option>
-      <option value="Suite">Suite</option>
-    </select>
-
-    <button type="submit">Check Availability</button>
+        <button type="submit">Check Availability</button>
+      </div>
+    </form>
+    <div id="booking-result" style="color: white; margin-top: 20px;"></div>
   </div>
-</form>
-<div id="booking-result" style="color: white; margin-top: 20px;"></div>
-
-
+</section>
 
 <section id="helpdesk">
   <div class="container">
@@ -162,202 +158,7 @@
   &copy; 2025 StayEase Hotels. Your comfort, our priority.
 </footer>
 
-<script>
-  function showLoader() {
-    const loader = document.getElementById('loader');
-    loader.style.display = 'flex';
-    setTimeout(() => {
-      loader.style.display = 'none';
-    }, 850);
-  }
-
-  function checkAvailability(event) {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const room = document.getElementById('room-type').value;
-    const checkin = document.getElementById('checkin').value;
-    const checkout = document.getElementById('checkout').value;
-    const result = `
-      <p><strong>Thank you, ${name}!</strong></p>
-      <p>Your ${room} room is being checked for availability from ${checkin} to ${checkout}.</p>
-    `;
-    document.getElementById('booking-result').innerHTML = result;
-  }
-
-  function showMoreReviews() {
-    const moreReviews = [
-      { name: "Suleman", text: "Loved the service and the location. Very convenient and peaceful." },
-      { name: "Razzaq", text: "Impressed with cleanliness and helpful staff. Good value for money." },
-      { name: "Karthik", text: "Had a smooth check-in and comfortable stay. Highly recommend." },
-      { name: "Anirudh", text: "Great experience, the food was delicious too!" },
-      { name: "Ved", text: "Family-friendly hotel with great amenities. My kids loved it!" },
-      { name: "Rama Krishna", text: "I’ve stayed at many hotels, but StayEase feels like home." },
-      { name: "Adith", text: "Exceptional service and neat rooms. Worth every rupee." },
-      { name: "Malik", text: "Affordable luxury. You get more than what you pay for." },
-    ];
-
-    const container = document.getElementById("more-reviews");
-    moreReviews.forEach(review => {
-      const box = document.createElement("div");
-      box.className = "review-box";
-      box.innerHTML = `<p>"${review.text}"</p><h4>- ${review.name}</h4>`;
-      container.appendChild(box);
-    });
-
-    container.style.display = "block";
-    event.target.style.display = "none";
-  }
-</script>
-  <script>
-  const hotelOptions = {
-    Hyderabad: ["StayEase Banjara", "StayEase Gachibowli"],
-    Delhi: ["StayEase Connaught", "StayEase Karol Bagh"],
-    Mumbai: ["StayEase Andheri", "StayEase Bandra"]
-  };
-
-  function updateHotels() {
-    const city = document.getElementById("city").value;
-    const hotelSelect = document.getElementById("hotel");
-    hotelSelect.innerHTML = `<option value="">Select Hotel</option>`;
-    if (city && hotelOptions[city]) {
-      hotelOptions[city].forEach(hotel => {
-        const option = document.createElement("option");
-        option.value = hotel;
-        option.textContent = hotel;
-        hotelSelect.appendChild(option);
-      });
-    }
-  }
-
-  function checkAvailability(event) {
-    event.preventDefault();
-    const name = document.getElementById('name').value;
-    const room = document.getElementById('room-type').value;
-    const checkin = document.getElementById('checkin').value;
-    const city = document.getElementById('city').value;
-    const hotel = document.getElementById('hotel').value;
-    const result = `
-      <p><strong>Thank you, ${name}!</strong></p>
-      <p>Your ${room} room at <strong>${hotel}</strong>, ${city} is being checked for availability on ${checkin}.</p>
-    `;
-    document.getElementById('booking-result').innerHTML = result;
-  }
-</script>
-  <script>
-function updateHotels() {
-  const city = document.getElementById("city").value;
-  const hotelSelect = document.getElementById("hotel");
-
-  // Clear previous options
-  hotelSelect.innerHTML = '<option value="">Select Hotel</option>';
-
-  const hotels = {
-    Hyderabad: ["Pearl Residency", "Charminar Palace", "Banjara Retreat"],
-    Delhi: ["Red Fort Inn", "Capital Comfort", "Connaught Royale"],
-    Mumbai: ["Marine View Hotel", "Gateway Residency", "Bollywood Stay"],
-    Bangalore: ["Silicon Suites", "Gardenia Grand", "Cubbon Comfort"]
-  };
-
-  if (hotels[city]) {
-    hotels[city].forEach(hotel => {
-      const option = document.createElement("option");
-      option.value = hotel;
-      option.textContent = hotel;
-      hotelSelect.appendChild(option);
-    });
-  }
-}
-    function toggleProfilePopup() {
-  const popup = document.getElementById("profile-popup");
-  const profileData = JSON.parse(localStorage.getItem("userProfile"));
-
-  if (profileData) {
-    document.getElementById("form-title").innerText = `Hi, ${profileData.name}`;
-    document.querySelector('#popup-name').style.display = 'none';
-    document.querySelector('#popup-email').style.display = 'none';
-    document.querySelector('#popup-photo').style.display = 'none';
-    document.querySelector('#profile-popup button:nth-child(4)').style.display = 'none';
-    document.querySelector('#profile-popup button:nth-child(5)').style.display = 'inline-block';
-  } else {
-    document.getElementById("form-title").innerText = "Login / Signup";
-    document.querySelector('#popup-name').style.display = 'inline-block';
-    document.querySelector('#popup-email').style.display = 'inline-block';
-    document.querySelector('#popup-photo').style.display = 'inline-block';
-    document.querySelector('#profile-popup button:nth-child(4)').style.display = 'inline-block';
-    document.querySelector('#profile-popup button:nth-child(5)').style.display = 'none';
-  }
-
-  popup.style.display = popup.style.display === "block" ? "none" : "block";
-  document.body.classList.toggle("blur-bg");
-}
-function logout() {
-  localStorage.removeItem("userProfile");
-  updateProfileUI();
-  const popup = document.getElementById("profile-popup");
-  popup.style.display = "none";
-  document.body.classList.remove("blur-bg");
-}
-    function toggleProfilePopup() {
-  const popup = document.getElementById("profile-popup");
-  popup.style.display = popup.style.display === "block" ? "none" : "block";
-}
-
-function saveProfile() {
-  const name = document.getElementById("popup-name").value;
-  const email = document.getElementById("popup-email").value;
-  const photo = document.getElementById("popup-photo").files[0];
-
-  if (!name || !email) {
-    alert("Please fill in all required fields.");
-    return;
-  }
-
-  const reader = new FileReader();
-  reader.onload = function () {
-    const profile = {
-      name,
-      email,
-      photo: reader.result
-    };
-    localStorage.setItem("userProfile", JSON.stringify(profile));
-    updateProfileUI();
-    toggleProfilePopup();
-  };
-  if (photo) {
-    reader.readAsDataURL(photo);
-  } else {
-    const profile = { name, email, photo: "" };
-    localStorage.setItem("userProfile", JSON.stringify(profile));
-    updateProfileUI();
-    toggleProfilePopup();
-  }
-}
-
-function updateProfileUI() {
-  const profileData = JSON.parse(localStorage.getItem("userProfile"));
-  const icon = document.querySelector(".profile-button");
-
-  if (profileData) {
-    icon.innerHTML = profileData.photo
-      ? `<img src="${profileData.photo}" style="width: 40px; height: 40px; border-radius: 50%;" title="${profileData.name}" />`
-      : `<i class="fas fa-user-circle fa-2x" title="${profileData.name}"></i>`;
-  }
-}
-
-function logout() {
-  localStorage.removeItem("userProfile");
-  updateProfileUI();
-  toggleProfilePopup();
-}
-
-// Load user on page load
-window.onload = () => {
-  updateProfileUI();
-  displayProfile();
-};
-
-
-</script>
-
+<!-- JavaScript -->
+<script src="hotel.js"></script>
 </body>
 </html>
