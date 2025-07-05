@@ -103,6 +103,13 @@
       max-width: 1000px;
       margin: auto;
     }
+.blur-bg header,
+.blur-bg section,
+.blur-bg footer {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
 
 form {
   background-color: #000000; /* Pale green */
