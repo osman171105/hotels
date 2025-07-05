@@ -84,6 +84,40 @@
     section {
       padding: 60px 20px;
     }
+.profile-button {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.profile-popup {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.popup-content input, .popup-content button {
+  padding: 10px;
+  width: 100%;
+  max-width: 250px;
+  font-size: 1rem;
+}
 
     section#about { background-color: #d0e8f2; }
     section#rooms { background-color: #ffe8a9; }
