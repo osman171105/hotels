@@ -7,22 +7,14 @@
       font-family: 'Segoe UI', sans-serif;
     }
 
-    body {
-      background: #fdfdfd;
-      color: #333;
-      padding-top: 0;
-    }
-
-    header {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 80px;
-    }
+body {
+  background: linear-gradient(to bottom, #3a8dde, #2fc17d);
+  color: #fff;
+  transition: background 0.5s ease;
+}
+header, section, footer {
+  background: transparent;
+}
 
     header video {
       position: absolute;
@@ -81,9 +73,7 @@
       to { opacity: 1; }
     }
 
-    section {
-      padding: 60px 20px;
-    }
+  
 .profile-button {
   position: absolute;
   left: 30px;
@@ -271,13 +261,7 @@ form button:hover {
       color: #c1440e;
     }
 
-    footer {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-    }
+
 
     #loader {
       display: none;
@@ -349,4 +333,50 @@ section#booking::before {
       text-align: right;
       color: #333;
     }
+h1, h2 {
+  color: #e0f7fa; /* Light cyan */
+  text-shadow: 0 1px 3px rgba(0,0,0, 0.4);
+}
+p, input, select, button {
+  color: #e0f7fa;
+}
+.profile-popup .popup-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  backdrop-filter: blur(10px);
+  max-width: 320px;
+  margin: auto;
+}
+.profile-popup input,
+.profile-popup textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.profile-popup button {
+  margin: 8px 4px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #223;
+}
+#logout-btn { background: #d32f2f; }
+#submit-btn { background: #42a5f5; }
+.profile-popup img.preview {
+  display: block;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 10px auto;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+
   </style>
