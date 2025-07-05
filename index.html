@@ -20,6 +20,9 @@
 </div>-->
 
 <nav class="top-nav">
+  <div class="profile-button" onclick="toggleProfilePopup()">
+    <i class="fas fa-user-circle fa-2x"></i>
+  </div>
   <a href="#about" onclick="showLoader()">About</a>
   <a href="#rooms" onclick="showLoader()">Rooms</a>
   <a href="#booking" onclick="showLoader()">Booking</a>
@@ -27,6 +30,16 @@
   <a href="#reviews" onclick="showLoader()">Reviews</a>
   <a href="#contact" onclick="showLoader()">Contact</a>
 </nav>
+<div id="profile-popup" class="profile-popup">
+  <div class="popup-content">
+    <h3 id="form-title">Login / Signup</h3>
+    <input type="text" id="popup-name" placeholder="Enter your name" required />
+    <input type="email" id="popup-email" placeholder="Enter your email" required />
+    <input type="file" id="popup-photo" accept="image/*" />
+    <button onclick="saveProfile()">Submit</button>
+    <button onclick="logout()" style="background-color: red;">Logout</button>
+  </div>
+</div>
 
 <header>
   <video autoplay muted loop playsinline>
@@ -284,6 +297,65 @@ function logout() {
   popup.style.display = "none";
   document.body.classList.remove("blur-bg");
 }
+    function toggleProfilePopup() {
+  const popup = document.getElementById("profile-popup");
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+}
+
+function saveProfile() {
+  const name = document.getElementById("popup-name").value;
+  const email = document.getElementById("popup-email").value;
+  const photo = document.getElementById("popup-photo").files[0];
+
+  if (!name || !email) {
+    alert("Please fill in all required fields.");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const profile = {
+      name,
+      email,
+      photo: reader.result
+    };
+    localStorage.setItem("userProfile", JSON.stringify(profile));
+    updateProfileUI();
+    toggleProfilePopup();
+  };
+  if (photo) {
+    reader.readAsDataURL(photo);
+  } else {
+    const profile = { name, email, photo: "" };
+    localStorage.setItem("userProfile", JSON.stringify(profile));
+    updateProfileUI();
+    toggleProfilePopup();
+  }
+}
+
+function updateProfileUI() {
+  const profileData = JSON.parse(localStorage.getItem("userProfile"));
+  const icon = document.querySelector(".profile-button");
+
+  if (profileData) {
+    icon.innerHTML = profileData.photo
+      ? `<img src="${profileData.photo}" style="width: 40px; height: 40px; border-radius: 50%;" title="${profileData.name}" />`
+      : `<i class="fas fa-user-circle fa-2x" title="${profileData.name}"></i>`;
+  }
+}
+
+function logout() {
+  localStorage.removeItem("userProfile");
+  updateProfileUI();
+  toggleProfilePopup();
+}
+
+// Load user on page load
+window.onload = () => {
+  updateProfileUI();
+  displayProfile();
+};
+
 
 </script>
 
