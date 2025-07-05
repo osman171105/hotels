@@ -273,9 +273,16 @@ function updateHotels() {
     document.querySelector('#profile-popup button:nth-child(4)').style.display = 'inline-block';
     document.querySelector('#profile-popup button:nth-child(5)').style.display = 'none';
   }
-o
+
   popup.style.display = popup.style.display === "block" ? "none" : "block";
   document.body.classList.toggle("blur-bg");
+}
+function logout() {
+  localStorage.removeItem("userProfile");
+  updateProfileUI();
+  const popup = document.getElementById("profile-popup");
+  popup.style.display = "none";
+  document.body.classList.remove("blur-bg");
 }
 
 </script>
