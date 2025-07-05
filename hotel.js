@@ -150,3 +150,34 @@ function logout() {
 window.onload = () => {
   updateProfileUI();
 };
+function toggleProfilePopup() {
+  const popup = document.getElementById("profile-popup");
+  const profileData = JSON.parse(localStorage.getItem("userProfile"));
+  const main = document.querySelector(".main-content");
+
+  if (profileData) {
+    document.getElementById("form-title").innerText = `Hi, ${profileData.name}`;
+    document.querySelector('#popup-name').style.display = 'none';
+    document.querySelector('#popup-email').style.display = 'none';
+    document.querySelector('#popup-photo').style.display = 'none';
+    document.getElementById('profile-pic-label').style.display = 'none';
+    document.querySelector('#submit-btn').style.display = 'none';
+    document.querySelector('#logout-btn').style.display = 'inline-block';
+  } else {
+    document.getElementById("form-title").innerText = "Login / Signup";
+    document.querySelector('#popup-name').style.display = 'inline-block';
+    document.querySelector('#popup-email').style.display = 'inline-block';
+    document.querySelector('#popup-photo').style.display = 'inline-block';
+    document.getElementById('profile-pic-label').style.display = 'inline-block';
+    document.querySelector('#submit-btn').style.display = 'inline-block';
+    document.querySelector('#logout-btn').style.display = 'none';
+  }
+
+  if (popup.style.display === "block") {
+    popup.style.display = "none";
+    document.body.classList.remove("blur-bg");
+  } else {
+    popup.style.display = "block";
+    document.body.classList.add("blur-bg");
+  }
+}
