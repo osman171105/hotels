@@ -149,3 +149,35 @@ function logout() {
 window.onload = () => {
   updateProfileUI();
 };
+// Add image preview
+document.getElementById('popup-photo').addEventListener('change', e => {
+  const [file] = e.target.files;
+  if (!file) return;
+  const preview = document.querySelector('img.preview') || (() => {
+    const img = document.createElement('img');
+    img.classList.add('preview');
+    document.querySelector('.popup-content').prepend(img);
+    return img;
+  })();
+  preview.src = URL.createObjectURL(file);
+});
+
+// Extended saveProfile to include phone & bio
+function saveProfile() {
+  const name = document.getElementById('popup-name').value;
+  const email = document.getElementById('popup-email').value;
+  const phone = document.getElementById('popup-phone').value;
+  const bio = document.getElementById('popup-bio').value;
+  // ...existing photo reader logic...
+  profile = { name, email, phone, bio, photo: reader.result };
+  localStorage.setItem('userProfile', JSON.stringify(profile));
+  updateProfileUI();
+  toggleProfilePopup();
+}
+function toggleTheme() {
+  document.body.classList.toggle('dark-theme');
+}
+function showTab(name){
+  document.querySelectorAll('.tab-pane').forEach(el => el.style.display = el.id === name ? 'block' : 'none');
+}
+
