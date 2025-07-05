@@ -36,6 +36,12 @@
     <button id="logout-btn" onclick="logout()" style="background-color: red; display: none;">Logout</button>
   </div>
 </div>
+<div class="profile-tab-container">
+  <button onclick="showTab('info')">Profile Info</button>
+  <button onclick="showTab('bookings')">My Bookings</button>
+  <button onclick="showTab('settings')">Settings</button>
+</div>
+<button id="theme-switcher" onclick="toggleTheme()">Switch Theme</button>
 
 <header>
   <video autoplay muted loop playsinline>
