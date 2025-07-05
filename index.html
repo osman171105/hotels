@@ -254,6 +254,30 @@ function updateHotels() {
     });
   }
 }
+    function toggleProfilePopup() {
+  const popup = document.getElementById("profile-popup");
+  const profileData = JSON.parse(localStorage.getItem("userProfile"));
+
+  if (profileData) {
+    document.getElementById("form-title").innerText = `Hi, ${profileData.name}`;
+    document.querySelector('#popup-name').style.display = 'none';
+    document.querySelector('#popup-email').style.display = 'none';
+    document.querySelector('#popup-photo').style.display = 'none';
+    document.querySelector('#profile-popup button:nth-child(4)').style.display = 'none';
+    document.querySelector('#profile-popup button:nth-child(5)').style.display = 'inline-block';
+  } else {
+    document.getElementById("form-title").innerText = "Login / Signup";
+    document.querySelector('#popup-name').style.display = 'inline-block';
+    document.querySelector('#popup-email').style.display = 'inline-block';
+    document.querySelector('#popup-photo').style.display = 'inline-block';
+    document.querySelector('#profile-popup button:nth-child(4)').style.display = 'inline-block';
+    document.querySelector('#profile-popup button:nth-child(5)').style.display = 'none';
+  }
+o
+  popup.style.display = popup.style.display === "block" ? "none" : "block";
+  document.body.classList.toggle("blur-bg");
+}
+
 </script>
 
 </body>
